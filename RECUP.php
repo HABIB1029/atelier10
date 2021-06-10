@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    
     <title>Document</title>
 </head>
 <body>
-    <h1>Bases de données MySQL</h1>  
+     
+     
     <?php
+            
             echo "<table>";
             echo "<tr'>
             <th>Id</th> <th>Preom</th> <th>nom</th> <th>âge</th ><th>Classe</th> <th>Date</th>
@@ -21,7 +23,7 @@
             }
 
             function current() {
-                return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+                return "<td>" . parent::current(). "</td>";
             }
 
             function beginChildren() {
@@ -33,15 +35,12 @@
             }
             }
 
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "senecole";
+            require_once("connexionBD.php");
 
             try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $requete = $conn->prepare("SELECT id, prenom, nom, age, classe, date_inscription  FROM etudiant ORDER BY nom");
+            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $requete = $connexion->prepare("SELECT id, prenom, nom, age, classe, date_inscription  FROM etudiant ORDER BY nom");
             $requete->execute();
 
             // set the resulting array to associative
@@ -52,7 +51,7 @@
             } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
             }
-            $conn = null;
+            
             echo "</table>";
 ?>
     </body>

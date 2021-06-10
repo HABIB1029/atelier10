@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-        <h1>Bases de données MySQL</h1>  
+          
         <?php
             require_once("connexionBD.php");
             // $servername = 'localhost';
@@ -22,10 +22,9 @@
 
                 $insertion = "INSERT INTO etudiant(nom, prenom, age, classe, date_inscription)
                             VALUES('SALL', 'Saliou', 19, 'TS2','2020-06-6'),
-                            ('BALDE', 'Mamadou', 21, 'licence3','2020-01-03'),
-                            ('FALL', 'Babacar', 19, 'TL2','2018-11-03')";
+                            ('KANE', 'marie', 21, 'licence3','2020-04-03')";
                 $connexion->exec($insertion);
-                echo 'valeurs inserer' ;           
+                echo "valeurs inserer" ;           
                
             }
             
